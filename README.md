@@ -6,4 +6,8 @@ To execute the program, on the node command line, enter 'node bamazonCustomer.js
 
 You will get a list of products and a prompt to enter a product number.
 
+![image](https://user-images.githubusercontent.com/25428778/42420950-7e410ec0-829b-11e8-8cf5-f2d6cb3e6858.png)
+
+When you enter a product number, it will ask you how many of this item you want to purchase.
+
 
