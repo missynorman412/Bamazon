@@ -38,14 +38,14 @@ function validation(value) {
     }
 }
 
-function displayInventory(){
+function displayInventory() {
     query = "SELECT * FROM products";
-    connection.query(query, function(err, data){
+    connection.query(query, function (err, data) {
         if (err) throw err;
-        console.log('Existing Inventory: ');
-
-    
-    })}
+        //Prompt the user for item/quantity they would like to purchase
+        selectProducts();
+    })
+}
 
 
 function selectProducts() {
@@ -55,7 +55,19 @@ function selectProducts() {
     connection.query(query, function (error, response) {
         if (error) throw error;
         // Log all results of the SELECT statement
-        console.log(response);
+        var strOut = '';
+		for (var i = 0; i < response.length; i++) {
+			strOut = '';
+			strOut += 'Item ID: ' + response[i].item_id + "  ";
+			strOut += 'Product Name: ' + response[i].product_name + "  ";
+			//strOut += 'Department: ' + response[i].department_name + " ";
+			strOut += 'Price: $' + response[i].price;
+
+            console.log(strOut);
+            
+         }
+       // console.log(response);
+        
         //After the products are listed, prompt the user for the ID of the product they want to purchase
         // function which prompts the user for what action they should take
         inquirer.prompt([
@@ -101,7 +113,7 @@ function selectProducts() {
                     } else {
                         console.log("There is not enough product in stock.");
                         console.log("Please reorder.");
-                        displayInventory();
+                       // displayInventory();
                     }
                 }
             })
